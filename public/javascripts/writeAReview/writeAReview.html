@@ -1,0 +1,202 @@
+<!-- ******************** NAVBAR ****************************** -->
+
+     <nav ng-controller="NavController" class="navbar navbar-default navbar-fixed-top " scroll ng-show="navBarVisible" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ng-class="getClass('/home')" href="#/home"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'">       
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-class="getClass('/writeareview')"><a href="#/writeareview">Donner un avis</a></li>
+            <li ng-class="getClass('/cours')"><a href="#/cours">Avis</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+<!-- ******************** NAVBAR END ****************************** -->
+
+
+
+<div class="container withSpaceTop">
+
+<div class="page-header"><h1>Ecrire un avis :</h1></div>
+  <div ng-repeat="course in courses.courses"><button ng-click="courseSelected(course)">{{course.name}}</option></div>
+ 
+ <form role="form" class="form" name="reviewForm" ng-submit="addReview()">
+
+  <div class="row">
+  <div class="col-md-2">
+    <div class="form-group" show-errors="{ showSuccess: true }">
+      <label>Nom du cours :</label>
+      <input type="text" class="form-control" name="name" ng-model="name" placeholder="Nom du cours" required>
+      </select>
+    </div>
+  </div>
+  
+  <div class="col-md-2">
+    <div class="form-group" show-errors="{ showSuccess: true }">
+      <label>Code Cours :</label>
+      <input type="text" class="form-control" name="code" ng-model="code" placeholder="Code du cours" required>
+    </div>
+  </div>
+  <div class="col-md-2">
+  <div class="form-group" show-errors="{ showSuccess: true }">
+    <label>Heure :</label>
+    <select class="form-control" name="timeOfTheCourse" ng-model="time" required>
+      <option value="Lundi">9h-12h</option>
+      <option value="Mardi">13h-16h</option>
+      <option value="Mercredi">16h-19h</option>
+    </select>
+  </div>
+  </div>
+  <div class="col-md-2">
+  <div class="form-group" show-errors="{ showSuccess: true }">
+    <label>Jour :</label>
+    <select class="form-control" name="day" ng-model="day" required>
+      <option value="Lundi">Lundi</option>
+      <option value="Mardi">Mardi</option>
+      <option value="Mercredi">Mercredi</option>
+      <option value="Jeudi">Jeudi</option>
+      <option value="Vendredi">Vendredi</option>
+    </select>
+  </div>
+  </div>
+  <div class="col-md-3">
+      <div class="form-group" show-errors="{ showSuccess: true }">
+        <label>Professeur :</label>
+        <input type="text" ng-model="professor" placeholder="Professeur" class="form-control" required ></input>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group" show-errors="{ showSuccess: true }">
+      <label>Trimestre :</label>
+      <div class="radio" required>
+        <label class="radio-inline"><input type="radio" value="T1" ng-model="trimester" ng-required="!trimester" >T1</input></label>
+        <label class="radio-inline"><input type="radio" value="T2" ng-model="trimester" ng-required="!trimester">T2</input></label>
+        <label class="radio-inline"><input type="radio" value="T3" ng-model="trimester" ng-required="!trimester">T3</input></label>
+      </div>
+      </div>
+    </div>
+  <div class="col-md-4">
+  <div class="form-group" show-errors="{ showSuccess: true }">
+    <label>Année :</label>
+    <div class="radio" required>
+        <label class="radio-inline"><input type="radio" value="{{thisYear}}" ng-model="year" ng-required="!year">{{thisYear}}</input></label>
+        <label class="radio-inline"><input type="radio" value="{{lastYear}}" ng-model="year" ng-required="!year">{{lastYear}}</input></label>
+        <label class="radio-inline"><input type="radio" value="{{twoYearsAgo}}" ng-model="year" ng-required="!year">{{twoYearsAgo}}</input></label>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-2">
+      <div class="form-group" show-errors="{ showSuccess: true }">
+        <label>Points misés :</label>
+        <input type="text" ng-model="bet" class="form-control"></input>
+      </div>
+    </div>
+  <div class="col-md-2">
+      <div class="form-group" show-errors="{ showSuccess: true }">
+      <label>Tour :</label>
+      <div class="radio" required>
+        <label class="radio-inline"><input type="radio" value="T1" ng-model="round" ng-required="!round">1</input></label>
+        <label class="radio-inline"><input type="radio" value="T2" ng-model="round" ng-required="!round">2</input></label>
+        <label class="radio-inline"><input type="radio" value="T3" ng-model="round" ng-required="!round">3</input></label>
+      </div>
+      </div>
+  </div>
+  </div>
+
+  <!-- A voir avec le BDE comment ils récupèrent le nom des profs -->
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group" show-errors="{ showSuccess: true }">
+      <label>Contenu :</label>
+      <select class="form-control" name="contentGrade" ng-model="contentGrade" required>
+      <option value="10">10</option>
+      <option value="9">9</option>
+      <option value="8">8</option>
+      <option value="7">7</option>
+      <option value="6">6</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+      <option value="0">0</option>
+    </select>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group" show-errors="{ showSuccess: true }">
+      <label>Pédagogie :</label>
+      <select class="form-control" name="teachingGrade" ng-model="teachingGrade" required>
+      <option value="10">10</option>
+      <option value="9">9</option>
+      <option value="8">8</option>
+      <option value="7">7</option>
+      <option value="6">6</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+      <option value="0">0</option>
+    </select>
+    </div>
+    </div>
+
+  <div class="col-md-2">
+  <div class="form-group" show-errors="{ showSuccess: true }">
+    <label>Obtenue :</label>
+    <select class="form-control" name="passed" ng-model="passed" required >
+      <option value="oui">oui</option>
+      <option value="non">non</option>
+    </select>
+  </div>
+  </div>
+  </div>
+
+  <div class="form-group" show-errors="{ showSuccess: true }">
+    <label>Commentaire Contenu :</label>
+    <textarea class="form-control textarea" rows="5"  name ="contentReview" ng-model="contentReview" required></textarea>
+  </div>
+
+  <div class="form-group" show-errors="{ showSuccess: true }">
+    <label>Commentaire Pédagogie :</label>
+    <textarea class="form-control textarea" rows="5" name="teachingReview" ng-model="teachingReview" required></textarea>
+  </div>
+
+  <div class="row pull-right">
+  <button type="submit" class="btn btn-primary">Envoyer</button>
+  </div>
+
+
+  </form>
+
+  <div class="withSpaceTop"></div>
+
+
+
+</div>

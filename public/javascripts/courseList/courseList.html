@@ -1,0 +1,117 @@
+<!-- ******************** NAVBAR ****************************** -->
+
+     <nav ng-controller="NavController" class="navbar navbar-default navbar-fixed-top nav-down" scroll role="navigation" ng-show="navBarVisible">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ng-class="getClass('/home')" href="#/home"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'">       
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-class="getClass('/writeareview')"><a href="#/writeareview">Donner un avis</a></li>
+            <li ng-class="getClass('/cours')"><a href="#/cours">Avis</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+<!-- ******************** NAVBAR END ****************************** -->
+
+
+<div class="container withSpaceTop">
+	
+	<div class="col-md-12 withSpaceTop whiteSpaceBot" style="font-family: 'Pacifico'; font-size: 80; text-align: center; color: #1B90D5; padding-bottom: 20px;">
+	CMT
+	</div>
+
+	<div class="input-group changethisone col-md-6 col-md-offset-3" >
+    <input type="text"  class="form-control" placeholder="Rechercher un cours" ng-model="searchCourse"/>
+    <span class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+    </span>
+	</div>
+
+
+
+
+		<div class="row" style="margin-bottom: 50px; margin-top: 50px;">
+		<div class="col-md-4 col-md-offset-1" style="padding-bottom: 5px">
+			<div style="width:310px;height:20px;position:relative;"> 
+				<div style="position:absolute; left:0px; width:160px; height:20px;">
+					<label for="alphabeticalOrder" class="">Ordre alphabétique</label>
+				</div>
+				<div style="position:absolute; left:160px; width:100px; height:20px;" ng-click="sortCatalog('alphabeticalOrder')">
+					<switch id="alphabeticalOrder" name="alphabeticalOrder" ng-model="alphabeticalOrder" class="green"><switch>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3" style="padding-bottom: 5px">
+			<div style="width:310px;height:20px;position:relative;"> 
+				<div style="position:absolute; left:0px; width:160px; height:20px;">
+					<label for="descendingGradeOrder" class="">Note décroissante</label>
+				</div>
+				<div style="position:absolute; left:160px; width:100px; height:20px;" ng-click="sortCatalog('descendingGradeOrder')">
+					<switch id="descendingGradeOrder" name="descendingGradeOrder" ng-model="descendingGradeOrder" class="green"><switch>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2 col-md-offset-1" style="padding-bottom: 5px">
+			<div style="width:310px;height:20px;position:relative;"> 
+				<div style="position:absolute; left:0px; width:160px; height:20px;">
+					<label for="ascendingGradeOrder" class="">Note croissante</label>
+				</div>
+				<div style="position:absolute; left:160px; width:100px; height:20px;" ng-click="sortCatalog('ascendingGradeOrder')">
+					<switch id="ascendingGradeOrder" name="ascendingGradeOrder" ng-model="ascendingGradeOrder" class="green"><switch>
+				</div>
+			</div>
+		</div>
+		</div>
+
+	<div class="row">
+		<div class="col-md-12">
+
+
+			 <table class="table table-striped table-hover">
+	      <tbody>
+	      <tr>
+	        <th class="Code">Code</th>
+	        <th class="Nom">Cours</th>
+	        <th class="Note">Note</th>
+	      </tr>
+	      </tbody>
+	      
+	      <tbody>
+
+
+	        <tr ng-repeat="course in courses.courses | orderBy: sort | filter:searchCourse" ng-click="go(course._id)">
+	          <td>{{course.code}}</td>
+	          <td>{{course.name}}</td>
+	          <td>{{course.courseAverage}}</td>
+	        </tr>
+	      </tbody>
+	    </table>
+	    </div>
+
+
+	</div>
+
+
