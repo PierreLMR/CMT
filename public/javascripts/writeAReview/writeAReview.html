@@ -39,8 +39,6 @@
 
 <div class="container withSpaceTop">
 
-<div class="page-header"><h1>Ecrire un avis :</h1></div>
-  <div ng-repeat="course in courses.courses"><button ng-click="courseSelected(course)">{{course.name}}</option></div>
  
  <form role="form" class="form" name="reviewForm" ng-submit="addReview()">
 
@@ -84,7 +82,7 @@
   <div class="col-md-3">
       <div class="form-group" show-errors="{ showSuccess: true }">
         <label>Professeur :</label>
-        <input type="text" ng-model="professor" placeholder="Professeur" class="form-control" required ></input>
+        <input type="text" ng-model="professor" placeholder="Professeur" class="form-control" name="professor" required ></input>
       </div>
     </div>
   </div>
@@ -93,7 +91,7 @@
     <div class="col-md-2">
       <div class="form-group" show-errors="{ showSuccess: true }">
       <label>Trimestre :</label>
-      <div class="radio" required>
+      <div class="radio" name="trimester" required>
         <label class="radio-inline"><input type="radio" value="T1" ng-model="trimester" ng-required="!trimester" >T1</input></label>
         <label class="radio-inline"><input type="radio" value="T2" ng-model="trimester" ng-required="!trimester">T2</input></label>
         <label class="radio-inline"><input type="radio" value="T3" ng-model="trimester" ng-required="!trimester">T3</input></label>
@@ -103,7 +101,7 @@
   <div class="col-md-4">
   <div class="form-group" show-errors="{ showSuccess: true }">
     <label>Année :</label>
-    <div class="radio" required>
+    <div class="radio" name="year" required>
         <label class="radio-inline"><input type="radio" value="{{thisYear}}" ng-model="year" ng-required="!year">{{thisYear}}</input></label>
         <label class="radio-inline"><input type="radio" value="{{lastYear}}" ng-model="year" ng-required="!year">{{lastYear}}</input></label>
         <label class="radio-inline"><input type="radio" value="{{twoYearsAgo}}" ng-model="year" ng-required="!year">{{twoYearsAgo}}</input></label>
@@ -113,13 +111,13 @@
   <div class="col-md-2">
       <div class="form-group" show-errors="{ showSuccess: true }">
         <label>Points misés :</label>
-        <input type="text" ng-model="bet" class="form-control"></input>
+        <input type="text" ng-model="bet" class="form-control" name="bet"></input>
       </div>
     </div>
   <div class="col-md-2">
       <div class="form-group" show-errors="{ showSuccess: true }">
       <label>Tour :</label>
-      <div class="radio" required>
+      <div class="radio" name="registrationRound" required>
         <label class="radio-inline"><input type="radio" value="T1" ng-model="round" ng-required="!round">1</input></label>
         <label class="radio-inline"><input type="radio" value="T2" ng-model="round" ng-required="!round">2</input></label>
         <label class="radio-inline"><input type="radio" value="T3" ng-model="round" ng-required="!round">3</input></label>
@@ -200,3 +198,4 @@
 
 
 </div>
+ <div ng-repeat="course in courses.courses"><button ng-click="courseSelected(course)">{{course.name}}</option></div>

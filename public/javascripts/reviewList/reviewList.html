@@ -46,7 +46,7 @@
 
 
 
-  <div class="row withSpaceTop" >
+  <!-- <div class="row withSpaceTop" >
     <div class="col-md-5">
       <div 
         data-ac-chart="'line'" 
@@ -63,8 +63,14 @@
         class="chart">
       </div>
     </div>
+  </div> -->
+  <div class="row">
+  <div class="col-md-5">
+  <canvas id="bar" class="chart chart-bar"
+  chart-data="data" chart-labels="labels" chart-series="series">
+  </canvas>
   </div>
-  
+  </div>
 
 <hr>
 
@@ -75,7 +81,7 @@
           <label for="date" class="">Date</label>
         </div>
         <div style="position:absolute; left:200px; width:100px; height:20px;" ng-click="sortReviews('orderByDate')">
-          <switch id="date" name="orderByDate" ng-model="orderByDate" class="green"><switch>
+          <switch id="date" name="orderByDate" ng-model="orderByDate"><switch>
         </div>
       </div>
     </div>
@@ -85,7 +91,7 @@
           <label for="upvotes" class="">Upvotes</label>
         </div>
         <div style="position:absolute; left:200px; width:100px; height:20px;" ng-click="sortReviews('orderByUpvotes')">
-          <switch id="upvotes" name="orderByUpvotes" ng-model="orderByUpvotes" class="green"><switch>
+          <switch id="upvotes" name="orderByUpvotes" ng-model="orderByUpvotes"><switch>
         </div>
       </div>
     </div>
@@ -96,7 +102,7 @@
           <label for="orderByDescendingGrade" class="">Note décroissante</label>
         </div>
         <div style="position:absolute; left:200px; width:100px; height:20px;" ng-click="sortReviews('orderByDescendingGrade')">
-          <switch id="orderByDescendingGrade" name="orderByDescendingGrade" ng-model="orderByDescendingGrade" class="green"><switch>
+          <switch id="orderByDescendingGrade" name="orderByDescendingGrade" ng-model="orderByDescendingGrade"><switch>
         </div>
       </div>
     </div>
@@ -106,7 +112,7 @@
           <label for="orderByAscendingGrade" class="">Note croissante</label>
         </div>
         <div style="position:absolute; left:200px; width:100px; height:20px;" ng-click="sortReviews('orderByAscendingGrade')">
-          <switch id="orderByAscendingGrade" name="orderByAscendingGrade" ng-model="orderByAscendingGrade" class="green"><switch>
+          <switch id="orderByAscendingGrade" name="orderByAscendingGrade" ng-model="orderByAscendingGrade"><switch>
         </div>
       </div>
     </div>

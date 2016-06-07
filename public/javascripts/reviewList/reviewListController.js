@@ -1,12 +1,19 @@
 angular.module('CMT.reviewListController', []).controller('reviewListController', ['$scope', 'graph', 'courses', 'course', function ($scope, graph, courses, course){
 
-	  $scope.configGrade = graph.config;
-	  $scope.data = graph.data;
+	  //$scope.configGrade = graph.config;
+	 // $scope.data = graph.data;
 	  $scope.orderByDate = true;
 	  $scope.course = course;
+	  $scope.labels = graph.labels
+	  $scope.series = graph.series;
+	  $scope.data = graph.data;
 
-
-	  graph.termsSetup(courses.courses);
+	  $scope.getStyle = function(enabled, color) {
+			 return {
+			  'background': enabled?color:'#1B90D5',
+			  'border-color': enabled?color:'#1B90D5'
+			 }
+			}
 
 	  $scope.sortReviews = function ( sortMode){
 

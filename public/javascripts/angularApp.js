@@ -1,4 +1,4 @@
-var app = angular.module('CMT', ['ui.router', 'angularCharts', 'uiSwitch', 'CMT.MainCtrl', 'CMT.NavController', 'CMT.reviewListController', 'CMT.courseListController', 'CMT.writeAReviewController', 'ui.bootstrap.showErrors']);
+var app = angular.module('CMT', ['ui.router', 'chart.js', 'uiSwitch', 'CMT.MainCtrl', 'CMT.NavController', 'CMT.reviewListController', 'CMT.courseListController', 'CMT.writeAReviewController', 'ui.bootstrap.showErrors']);
 
 app.factory('courses', ['$http', function($http){
 	
@@ -48,7 +48,7 @@ app.factory('courses', ['$http', function($http){
 
 app.factory('graph', function(){
 
-	var o = {
+	/*var o = {
 		config: {
 			title: 'Products',
 		    tooltips: true,
@@ -100,7 +100,7 @@ app.factory('graph', function(){
 
 		  return(uniq.sort());*/
 
-		  var newarr = (function(terms){
+		  /*var newarr = (function(terms){
 		  var m = {}, newarr = []
 		  for (var i=0; i<terms.length; i++) {
 		    var v = terms[i];
@@ -127,7 +127,49 @@ app.factory('graph', function(){
 		var terms = o.termsSetup(reviews);
 
 
-			};
+			};*/
+
+	var o = {
+		
+		labels : ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+  		series : ['Series A', 'Series B'],
+  		data : [
+    			[65, 59, 80, 81, 56, 55, 40],
+    			[28, 48, 40, 19, 86, 27, 90]
+  				]
+	};
+
+	o.labelsSetup = function (){
+		years = [];
+
+		if(date.getFullYear() % 2 == 0){
+
+		$scope.isYearEven = true;
+
+		thisYear = (date.getFullYear()-1).toString() + '/' + date.getFullYear().toString(); 
+		lastYear = (date.getFullYear()-2).toString() + '/' + (date.getFullYear()-1).toString(); 
+		twoYearsAgo = (date.getFullYear()-3).toString() + '/' + (date.getFullYear()-2).toString();
+		threeYearsAgo = (date.getFullYear()-4).toString() + '/' + (date.getFullYear()-3).toString();
+		fourYearsAgo = (date.getFullYear()-5).toString() + '/' + (date.getFullYear()-4).toString();
+		fiveYearsAgo = (date.getFullYear()-6).toString() + '/' + (date.getFullYear()-5).toString();
+	
+		}else{
+
+			$scope.isYearEven = false;
+			
+			thisYear = date.getFullYear().toString() + '/' + (date.getFullYear()+1).toString(); 
+			lastYear = (date.getFullYear()-2).toString() + '/' + (date.getFullYear()-1).toString();
+			twoYearsAgo = (date.getFullYear()-3).toString() + '/' + (date.getFullYear()-2).toString();
+			threeYearsAgo = (date.getFullYear()-4).toString() + '/' + (date.getFullYear()-3).toString();
+			fourYearsAgo = (date.getFullYear()-5).toString() + '/' + (date.getFullYear()-4).toString();
+			fiveYearsAgo = (date.getFullYear()-6).toString() + '/' + (date.getFullYear()-5).toString();
+		}
+
+		
+
+
+
+	};
 
 	return o;
 });
