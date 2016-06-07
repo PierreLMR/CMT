@@ -2,7 +2,7 @@ var mongoose =  require('mongoose');
 require('./models/Courses');
 //require('./models/Reviews');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cmt4');
+mongoose.connect(process.env.MONGODB_URI);
 
 
 var express = require('express');
