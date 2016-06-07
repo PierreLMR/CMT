@@ -2,8 +2,8 @@ var mongoose =  require('mongoose');
 require('./models/Courses');
 //require('./models/Reviews');
 
-mongoose.connect('mongodb:/heroku_6g8blllx:5ua4g701v462beujger92lg2dm@ds055842.mlab.com:55842/heroku_6g8blllx');
-
+mongoose.connect('mongodb://pierre:0000@ds055842.mlab.com:55842/heroku_6g8blllx');
+ //mongodb://<dbuser>:<dbpassword>@ds055842.mlab.com:55842/heroku_6g8blllx
 
 var express = require('express');
 var path = require('path');
