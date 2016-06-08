@@ -2,7 +2,7 @@ var mongoose =  require('mongoose');
 require('./models/Courses');
 //require('./models/Reviews');
 
-mongoose.connect('mongodb://pierre:0000@ds055842.mlab.com:55842/heroku_6g8blllx');
+mongoose.connect(process.env.MONGODB_URI);
  //mongodb://<dbuser>:<dbpassword>@ds055842.mlab.com:55842/heroku_6g8blllx
 
 var express = require('express');
