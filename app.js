@@ -2,11 +2,16 @@ var mongoose =  require('mongoose');
 require('./models/Courses');
 //require('./models/Reviews');
 
-var db;
-
+//try a console log to know if we even get there....
 mongoose.connect(process.env.MONGODB_URI);
  //mongodb://<dbuser>:<dbpassword>@ds055842.mlab.com:55842/heroku_6g8blllx
 
+var conn = mongoose.connection;             
+ 
+conn.on('error', console.error.bind(console, 'connection error:'));  
+ 
+conn.once('open', function() {
+  // Wait for the database connection to establish, then start the app.                         
 
 
 var express = require('express');
@@ -71,3 +76,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+});
