@@ -2,8 +2,25 @@ var mongoose =  require('mongoose');
 require('./models/Courses');
 //require('./models/Reviews');
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, function (err, database) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  // Save database object from the callback for reuse.
+  db = database;
+  console.log("Database connection ready");
+
+  // Initialize the app.
+  var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
+});
  //mongodb://<dbuser>:<dbpassword>@ds055842.mlab.com:55842/heroku_6g8blllx
+
+
 
 var express = require('express');
 var path = require('path');
