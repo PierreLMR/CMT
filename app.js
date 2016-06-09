@@ -9,9 +9,6 @@ mongoose.connect(process.env.MONGODB_URI);
 var conn = mongoose.connection;             
  
 conn.on('error', console.error.bind(console, 'connection error:'));  
- 
-conn.once('open', function() {
-  // Wait for the database connection to establish, then start the app.                         
 
 
 var express = require('express');
@@ -76,4 +73,3 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-});
