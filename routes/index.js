@@ -47,7 +47,7 @@ router.param('course', function (req, res, next, id) {
 });*/
 
 router.post('/courses', function(req, res, next) {
-  var course = new Courses(req.body);
+  var course = new Course(req.body);
 
   course.save(function(err, course){
     if(err){ return next(err); }
