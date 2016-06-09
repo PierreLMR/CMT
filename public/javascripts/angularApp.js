@@ -238,7 +238,7 @@ app.config([
 
 		$stateProvider.state('writeareview', {
 			url: '/writeareview',
-			templateUrl: '/javascripts/writeareview/writeAReview.html',
+			templateUrl: '/javascripts/writeAReview/writeAReview.html',
 			controller: 'writeAReviewController',
 			resolve: {
 				coursePromise: ['courses', function (courses){
