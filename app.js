@@ -2,6 +2,8 @@ var mongoose =  require('mongoose');
 require('./models/Courses');
 //require('./models/Reviews');
 
+var db;
+
 mongoose.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
