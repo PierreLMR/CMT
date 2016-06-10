@@ -3,7 +3,7 @@ require('./models/Courses');
 //require('./models/Reviews');
 
 //try a console log to know if we even get there....
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/cmt4');
  //mongodb://<dbuser>:<dbpassword>@ds055842.mlab.com:55842/heroku_6g8blllx
 
 var conn = mongoose.connection;             
