@@ -175,7 +175,7 @@ app.factory('graph', function(){
 });
 
 
-//directive to hide and show navbar upon scrolling
+//directive to hide/show navbar upon scrolling
 app.directive("scroll", function ($window) {
     return function(scope, element, attrs) {
 
@@ -253,12 +253,3 @@ app.config([
 
 
 	}]);
-
-
-/*,
-			resolve: {
-			    coursePromise: ['courses', function(courses){
-			      return courses.getAll();
-			    }]
-			  }*/
-

@@ -88,7 +88,6 @@ router.get('/courses', function(req, res, next) {
 });
 
 
-
 /*router.put('/reviews/:review/upvote', function (req, res, next) {
 	req.review.upvote(function (err, review){
 		if(err) { return next(err); }
