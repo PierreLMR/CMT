@@ -5,10 +5,7 @@ require('./models/Courses');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cmt4');
 
-
-var conn = mongoose.connection;             
- 
-conn.on('error', console.error.bind(console, 'connection error:'));  
+console.log(mongoose);
 
 
 var express = require('express');
